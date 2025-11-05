@@ -1,0 +1,250 @@
+/* Custom Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+/* === Color Variables and Global Settings === */
+:root {
+    --primary-color: #4CAF50;     /* Green (Main Accent) */
+    --secondary-color: #FFC107;   /* Amber (Highlight Accent) */
+    --dark-bg: #1e272e;          /* Dark Slate (Header/Footer) */
+    --light-text: #ecf0f1;       /* Light Grey */
+    
+    /* Radial Gradient Colors for Hero Section */
+    --radial-center: #2f3640;     /* Darker Center */
+    --radial-edge: #1e272e;       /* Dark Outer Edge */
+
+    --section-one-bg: #ffffff;   /* White */
+    --section-two-bg: #f5f5f5;   /* Light Grey */
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--dark-bg); 
+    padding-top: 70px; 
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease; 
+}
+
+/* === Utility Classes === */
+.content-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--secondary-color);
+    text-transform: uppercase;
+}
+
+/* === Button Styling (Transition & Transform) === */
+.button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    margin-top: 20px;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Transition for smooth hover effect */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+}
+
+.button:hover {
+    background: var(--secondary-color);
+    color: var(--dark-bg);
+    /* Transform: Scale up and slight 3D Z-axis lift */
+    transform: scale(1.05) translateZ(5px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* -------------------------------------- */
+/* KEYFRAMES for Hero Background Animation */
+/* -------------------------------------- */
+
+@keyframes subtleGradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* === Header / Nav === */
+header {
+    background: var(--dark-bg);
+    color: var(--light-text);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: var(--light-text);
+    margin-left: 25px;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* -------------------------------------- */
+/* === Hero Section (Radial Gradient & Animation) === */
+/* -------------------------------------- */
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--light-text);
+    
+    /* Radial Gradient Background Setup */
+    background: radial-gradient(
+        circle at 70% 30%, /* Center point ko thoda displace kiya gaya hai */
+        var(--radial-center) 0%, 
+        var(--radial-edge) 100%
+    );
+    
+    /* Animation Properties */
+    background-size: 200% 200%; /* Background size ko double karein */
+    animation: subtleGradientShift 25s ease infinite; /* Dheemi aur lambi animation */
+}
+
+.highlight {
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.7); 
+}
+
+/* -------------------------------------- */
+/* === About Section (Centering) === */
+/* -------------------------------------- */
+#about {
+    background-color: var(--section-one-bg);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Horizontally center content blocks */
+    gap: 40px;
+    flex-wrap: wrap; 
+}
+
+.about-content p {
+    max-width: 600px; 
+    text-align: left; /* Description ko readable rakhne ke liye */
+}
+
+.about-content img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 0 8px rgba(76, 175, 80, 0.2);
+    transition: transform 0.6s ease;
+}
+
+.about-content img:hover {
+    /* Transform: Slight 3D tilt */
+    transform: rotateY(10deg) scale(1.05);
+}
+
+/* -------------------------------------- */
+/* === Skills & Projects Card Transitions === */
+/* -------------------------------------- */
+#skills {
+    background-color: var(--section-two-bg);
+}
+
+.skills-grid, .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.skill-card, .project-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--primary-color);
+    text-align: left;
+    /* Transition for smooth hover */
+    transition: all 0.4s ease-out;
+}
+
+.skill-card:hover, .project-card:hover {
+    /* Transform: Lift and 3D perspective shift */
+    transform: translateY(-10px) rotateX(2deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-left-color: var(--secondary-color);
+}
+
+/* === Footer === */
+footer {
+    background: var(--dark-bg);
+    color: var(--light-text);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* === Media Queries (Responsiveness) === */
+@media (max-width: 768px) {
+    .hero-section h2 {
+        font-size: 2.8rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+    
+    .about-content {
+        gap: 20px;
+    }
+
+    .about-content img {
+        order: -1; 
+    }
+}
